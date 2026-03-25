@@ -1,0 +1,14 @@
+name: Pipeline de CI
+
+on: [push]
+
+jobs:
+  test-job1:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Iniciando o primeiro job de teste"
+
+  test-job2:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Executando o segundo job de teste solicitado no roteiro"
