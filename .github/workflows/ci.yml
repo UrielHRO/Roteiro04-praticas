@@ -3,12 +3,15 @@ name: Pipeline de CI
 on: [push]
 
 jobs:
-  test-job1:
+  unit-tests:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "Iniciando o primeiro job de teste"
-
-  test-job2:
-    runs-on: ubuntu-latest
-    steps:
-      - run: echo "Executando o segundo job de teste solicitado no roteiro"
+      - uses: actions/checkout@v4
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+      - name: Install Flask
+        run: pip install flask
+      - name: Run Tests
+        run: python -m unittest -v tests/appTest.py
