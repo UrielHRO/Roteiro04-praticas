@@ -28,3 +28,11 @@ jobs:
         run: |
           echo "Iniciando análise estática de segurança (SAST)..."
           echo "Nenhuma vulnerabilidade crítica encontrada."
+          
+  build-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Run Build Simulation
+        run: echo "Olá, ${{ github.actor }}! Construindo a aplicação..."
