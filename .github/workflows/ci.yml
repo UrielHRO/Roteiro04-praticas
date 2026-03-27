@@ -39,9 +39,8 @@ jobs:
   
   deploy-prod-job:
     needs: [unit-tests, build-job] # Garante que só roda se os testes e o build passarem
+    environment: production
     runs-on: ubuntu-latest
-    # Nota: No GitHub, a aprovação manual real requer "Settings > Environments" 
-    # Para este roteiro, vamos simular os comandos:
     steps:
       - name: Deploy to Production
         run: |
