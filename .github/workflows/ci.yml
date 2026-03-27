@@ -28,7 +28,7 @@ jobs:
         run: |
           echo "Iniciando análise estática de segurança (SAST)..."
           echo "Nenhuma vulnerabilidade crítica encontrada."
-          
+
   build-job:
     runs-on: ubuntu-latest
     steps:
@@ -36,3 +36,15 @@ jobs:
         uses: actions/checkout@v4
       - name: Run Build Simulation
         run: echo "Olá, ${{ github.actor }}! Construindo a aplicação..."
+  
+  deploy-prod-job:
+    needs: [unit-tests, build-job] # Garante que só roda se os testes e o build passarem
+    runs-on: ubuntu-latest
+    # Nota: No GitHub, a aprovação manual real requer "Settings > Environments" 
+    # Para este roteiro, vamos simular os comandos:
+    steps:
+      - name: Deploy to Production
+        run: |
+          echo "Implantando a branch ${{ github.ref_name }} em produção..."
+          sleep 20
+          echo "Implantação concluída com sucesso!"
